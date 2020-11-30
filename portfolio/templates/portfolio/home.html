@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <title>Personal Protfolio</title>
+  </head>
+  <style>
+    @media(min-width: 992px){
+      #hometext {
+        font-size: 4rem;
+      }
+      #blogdetailtitle{
+        font-size: 5rem;
+      }
+    }
+    .body {
+      font-family: 'Lato' sans-serif;
+      background-color: rgb(2, 2, 41);
+    }
+    .me {
+      margin-left: 420px;
+      margin-top: 50px;
+    }
+    .co {
+      color: white;
+    }
+    .text {
+      width: 500px;
+      font-size: 25px;
+      color: white;
+      margin-left: 310px;
+      margin-top: 30px;
+    }
+    .link {
+      text-decoration: none;
+      color: rgba(17, 16, 16, 0.795);
+      margin-bottom: 100px;
+    }
+    .tt {
+      font-size: 50pxpx;
+      margin-left: 50px;
+      color: white;
+    }
+    .all {
+      margin-top: 30px;
+    }
+    .emp {
+      height: 100px;
+      color: rgb(70, 68, 68);
+      margin-top: 50px;
+      margin-left: 50px;
+    }
+  </style>
+  <body class="body">
+    {% extends 'portfolio/base.html' %} {% block content %}{% load static %}
+
+    <img
+      class="me"
+      src="{% static 'images/Me.jpg' %}"
+      width="400"
+      height="500"
+    />
+    <section>
+      <div class="container">
+        <h2 class="tt">
+          Marufkhon Kurbonkhujaev! IT developer and Softwere engenery.This First
+          Personal Portfoilo. You can get some information about me by Resume
+          button
+        </h2>
+      </div>
+    </section>
+    {% for project in projects %}
+    <div class="container text-center">
+      <div class="all">
+        <img src="{{ project.image.url }}" width="500" height="250" />
+
+        <h1 class="co">{{ project.title }}</h1>
+
+        <p class="text">{{ project.description}}</p>
+
+        {% if project.url %}
+
+        <br />
+        <a class="link" href="{{ project.url }}"
+          ><button class="btn btn-info">Link to Site</button></a
+        >
+      </div>
+    </div>
+
+    {% endif %} {% endfor %} {% endblock %}
+    <div class="emp"><h4>Created by Marufkhon</h4></div>
+  </body>
+</html>
